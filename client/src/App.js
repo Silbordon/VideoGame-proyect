@@ -1,9 +1,13 @@
 import './App.css';
+import { Route } from 'react-router-dom';
+import Landing from './pages/Landing/Landing';
+import Home from './pages/Home/Home';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Videogames</h1>
+      <Route exact path="/"><Landing /></Route>
+      <Route exact path="/videogames"><Home /></Route>
     </div>
   );
 }
