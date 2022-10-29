@@ -1,0 +1,75 @@
+.mainContainer {
+  background-image: url("../../img/landing2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center
+}
+
+
+.textContainer{
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    padding:80px
+}
+
+
+.landingTitle {
+  font-weight: 600;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 0px #fff, 0 0 0px #fff;
+  animation-name: link;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.start {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 0.6em;
+  cursor: pointer;
+  font-size: 1.3rem;
+  margin: 10% 0;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  border-color: #9761AE;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #9761AE inset, 0 0 0 0 #9761AE;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.start:hover {
+  color: #fff;
+  outline: 0;
+  box-shadow: 0 0 10px 0 #9761AE inset, 0 0 10px 4px #9761AE;
+}
+
+@keyframes link {
+  0% {
+    text-shadow: 0 0 3px #fff, 0 0 0px #fff;
+  }
+
+  50% {
+    text-shadow: 0 0 6px rgb(206, 206, 206), 0 0 25px #fff;
+  }
+
+  100% {
+    text-shadow: 0 0 3px #fff, 0 0 0px #fff;
+  }
+}
