@@ -1,0 +1,38 @@
+.errorContainer{
+    height: calc( 100vh - 64px );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .error404{
+    background-image: url('../../img/error.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 450px;
+    width: 590px;
+  }
+
+  p{
+    font-size: 1.5rem;
+    margin-top: -1rem
+  }
+
+
+  .btn {
+    cursor: pointer;
+    padding: 0.2% 0;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    color: #9761ae;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .btn:hover {
+    color: #bc85c9;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+  }

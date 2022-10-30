@@ -1,9 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
 import style from "./Landing.module.css";
 
+import {useEffect } from 'react';
+import { useDispatch} from "react-redux"; 
+import { getAllMovies } from '../../redux/actions';
+
 const Landing = () => {
+
+  const dispatch = useDispatch()
+ 
+      useEffect (()=>{
+          dispatch(getAllMovies())
+      }, [dispatch])
+
   return (
     <div className={style.mainContainer}>
         <div className={style.textContainer}>

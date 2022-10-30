@@ -2,12 +2,20 @@ import React from "react";
 import style from "./Home.module.css";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import CreateVideogame from "../../components/CreateVideogame/CreateVideogame"
-import { useState } from "react";
+import {useState, useEffect } from 'react';
+import { useDispatch} from "react-redux"; 
+import { getAllMovies } from '../../redux/actions';
 
 const Home = () => {
 
-  const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const dispatch = useDispatch()
+ 
+      useEffect (()=>{
+          dispatch(getAllMovies())
+      }, [dispatch])
 
+//logica del boton de create
+  const [isVisibleModal, setIsVisibleModal] = useState(false);
   const openModal = () => setIsVisibleModal(true);
   const closeModal = () => setIsVisibleModal(false);
 
