@@ -4,7 +4,7 @@ const { Videogame, Genre } = require("../db");
 const { API_KEY } = process.env;
 
 // total de videogames de la api con los de la db
-const getVideogames = async (name, page) => {
+const getVideogames = async (name) => {
   const apiData = await getApiVideogames();
   const dbData = await getDbVideoGames();
 
@@ -21,7 +21,7 @@ const getVideogames = async (name, page) => {
   }
 
   // logica de paginacion
-  return paginateVideogames(totalVideogames, page);
+  return totalVideogames;
 };
 
 // trae los 100 primers videjuegos desde la api
@@ -41,6 +41,7 @@ const getApiVideogames = async () => {
     return {
       id: el.id,
       name: el.name,
+      rating: el.rating,
       genres: el.genres.map((gen) => gen.name),
       platforms: el.platforms.map((el) => el.platform.name),
       background_image: el.background_image,
@@ -66,9 +67,6 @@ const getDbVideoGames = async () => {
 };
 
 const paginateVideogames = (totalVideogames, page) => {
-  if (!page) {
-    page = 1;
-  }
   let start = (page - 1) * 15;
   let end = start + 15;
   return totalVideogames.slice(start, end);

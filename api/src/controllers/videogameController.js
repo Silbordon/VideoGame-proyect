@@ -31,7 +31,7 @@ const getApiVideogamesById = async (idVideogame) => {
     id: apiData.data.id,
     name: apiData.data.name,
     background_image: apiData.data.background_image,
-    description: apiData.data.description,
+    description: apiData.data.description_raw,
     released: apiData.data.released,
     rating: apiData.data.rating,
     platforms: platforms,

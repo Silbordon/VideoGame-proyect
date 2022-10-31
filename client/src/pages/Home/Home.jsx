@@ -1,23 +1,72 @@
 import React from "react";
 import style from "./Home.module.css";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
-import CreateVideogame from "../../components/CreateVideogame/CreateVideogame"
-import {useState, useEffect } from 'react';
-import { useDispatch} from "react-redux"; 
-import { getAllMovies } from '../../redux/actions';
+import CreateVideogame from "../../components/CreateVideogame/CreateVideogame";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllVideogames,
+  filterByGenre,
+  getGenres,
+  filterSource,
+  orderAlfabetic,
+  orderRating
+} from "../../redux/actions";
+import Pagination from "../../components/Pagination/Pagination";
 
 const Home = () => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
- 
-      useEffect (()=>{
-          dispatch(getAllMovies())
-      }, [dispatch])
+  useEffect(() => {
+    dispatch(getGenres());
+    dispatch(getAllVideogames());
+  }, [dispatch]);
 
-//logica del boton de create
+  //logica paginado
+  const [page, setPage] = useState(1);
+  const [order, setOrder] = useState("")
+  const [order2, setOrder2] = useState("")
+
+
+  //logica de get genres
+  const allGenres = useSelector((state) => state.genres);
+  
+  //logica del boton de create para el renderizado del form
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const openModal = () => setIsVisibleModal(true);
   const closeModal = () => setIsVisibleModal(false);
+
+  //logica de filtrados:
+  //generos
+  const handlerFilterGenre = (e) => {
+    setPage(1);
+    if (e.target.value) dispatch(filterByGenre(e.target.value));
+  };
+  //origen
+  const handlerFilterSource = (e) => {
+    setPage(1);
+    console.log(e.target.value)
+    if (e.target.value) dispatch(filterSource(e.target.value));
+  };
+
+
+
+  //logica de ordenamientos
+  const handlerOrderByAlfabetic = (e) => {
+    e.preventDefault()
+    setPage(1);
+    if (e.target.value) dispatch(orderAlfabetic(e.target.value));
+    setOrder(e.target.value)
+  };
+
+
+  const handlerOrderByRating = (e) => {
+    console.log(e.target.value)
+    e.preventDefault()
+    setPage(1);
+    if (e.target.value) dispatch(orderRating(e.target.value));
+    setOrder2(e.target.value)
+  };
 
 
   if (isVisibleModal === false) {
@@ -28,23 +77,44 @@ const Home = () => {
           <div className={style.filtersContainer}>
             <div className={style.selectContainer}>
               <label for="order">Order by</label>
-              <select className={style.select} name="order" id="order">
-                <option value="a-z">A-Z</option>
-                <option value="z-a">Z-A</option>
+              <select 
+                   onChange={(e) => handlerOrderByAlfabetic(e)}
+                  className={style.select} 
+                  name="order" 
+                  id="order">
+                     <option></option>
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
               </select>
             </div>
             <div className={style.selectContainer}>
               <label for="order">Rating</label>
-              <select className={style.select} name="order" id="order">
-                <option value="0-5">0-5</option>
-                <option value="5-0">5-0</option>
+              <select 
+               onChange={(e) => handlerOrderByRating(e)}
+                className={style.select} 
+                name="order" 
+                id="order">
+                   <option></option>
+                  <option value="0-5">0-5</option>
+                  <option value="5-0">5-0</option>
               </select>
             </div>
             <div className={style.selectContainer}>
               <label for="order">Genres</label>
-              <select className={style.select} name="order" id="order">
-                <option value="a-z">A-Z</option>
-                <option value="z-a">Z-A</option>
+              <select
+                onChange={(e) => handlerFilterGenre(e)}
+                className={style.select}
+                name="order"
+                id="order"
+              >
+                <option></option>
+                {allGenres?.map((el) => {
+                  return (
+                    <option key={el.id} value={el.name}>
+                      {el.name}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <div className={style.selectContainer}>
@@ -55,11 +125,17 @@ const Home = () => {
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">All</label>
-              <select className={style.select} name="order" id="order">
-                <option value="a-z">All</option>
-                <option value="z-a">API</option>
-                <option value="z-a">DB</option>
+              <label for="order">Source</label>
+              <select
+                onChange={(e) => handlerFilterSource(e)}
+                className={style.select}
+                name="order"
+                id="order"
+              >
+                <option></option>
+                <option value="all">All</option>
+                <option value="api">API</option>
+                <option value="db">DB</option>
               </select>
             </div>
             <button onClick={openModal} className={style.btn}>
@@ -74,21 +150,13 @@ const Home = () => {
             />
             <button className={style.btn}>Search</button>
           </div>
-          <div className={style.paginationContainer}>
-            <button className={style.pageBtn}>Next</button>
-            <p className={style.pageNumber}>1</p>
-            <button className={style.pageBtn}>Preview</button>
-          </div>
-          <CardsContainer />
+          <Pagination page={page} setPage={setPage} />
+          <CardsContainer page={page} />
         </div>
       </div>
     );
   } else {
-    return (
-    
-          <CreateVideogame func={closeModal} />
-        
-    );
+    return <CreateVideogame func={closeModal} />;
   }
 };
 

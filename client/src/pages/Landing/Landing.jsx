@@ -4,14 +4,14 @@ import style from "./Landing.module.css";
 
 import {useEffect } from 'react';
 import { useDispatch} from "react-redux"; 
-import { getAllMovies } from '../../redux/actions';
+import { getAllVideogames } from '../../redux/actions';
 
 const Landing = () => {
 
   const dispatch = useDispatch()
  
       useEffect (()=>{
-          dispatch(getAllMovies())
+          dispatch(getAllVideogames())
       }, [dispatch])
 
   return (

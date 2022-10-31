@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Card.module.css";
 import { NavLink } from 'react-router-dom';
 
-const Card = ({background_image, name, genres, platforms}) => {
+const Card = ({id,background_image, name, genres, platforms}) => {
   return (
     <div className={style.cardContainer}>
       <img className={style.cardImg} src={background_image} alt="" />
@@ -17,7 +17,7 @@ const Card = ({background_image, name, genres, platforms}) => {
         <span className={style.cardSpan}>{platforms.toString()}</span>
       </h4>
       </div>
-      <NavLink to={`/videogame/id`} className={style.detailLink}>
+      <NavLink to={`/videogame/${id}`} className={style.detailLink}>
         More Details
       </NavLink>
     </div>
