@@ -25,13 +25,14 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull : true
     },
-    platforms:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
-    },
+    // platforms:{
+    //   type: DataTypes.ARRAY(DataTypes.STRING),
+    //   allowNull: false
+    // },
     createInDb: {
       type: DataTypes.BOOLEAN,
-      default: true,
+      defaultValue: true,
+      allowNull: false
     }
   });
 };

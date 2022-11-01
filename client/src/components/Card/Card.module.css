@@ -1,10 +1,11 @@
 .cardContainer{
-    display: block;
-    position: relative;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1% 1.5%;
     overflow: hidden;
     width: 250px;
-    height: 330px;
+    height: 370px;
     background-color: black;
     box-shadow: 3px 0px 3px rgba(0, 0, 0, 0.404);
     transition: 0.5s ease-in-out;
@@ -20,34 +21,39 @@
 }
 
 .cardImg{
-    height: 50%;
+    height: 45%;
     width: 250px;
 }
 
 .cardTitle{
-font-size: 2rem;
-margin-bottom: 2%;
-margin-top: 3%
+margin-bottom: -3%;
+padding: 0 2%;
+font-size: 1.25rem;
 }
 
 .cardInf{
-    font-size: 1rem;
-    margin-bottom: 2%
+    font-size: 0.9rem;
+    margin: 5% 5%;
+    display:flex;
+    flex-direction: column
 }
 
 .cardSpan{
-    font-size: 0.8rem;
-    font-style: italic
+    font-size: 0.7rem;
+    font-style: italic;
+    margin-top: 1%
 }
 
 .detailLink{
     cursor: pointer;
     text-decoration: none;
     color: #9761ae;
-    font-size: 1.1rem
+    font-size: 1.1rem;
+    margin-bottom: 5%
 }
 
 .detailLink:hover{
     color: #bc85c9;
     font-weight: 600;
+   
 }

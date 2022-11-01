@@ -3,29 +3,22 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
-  /* height: 45vh; */
-  height: 100vh;
-  z-index: 100;
+  height: 47vh;
 }
 
 .bannerContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-color: rgba(0,0 ,0 , .75 );
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
   padding-top: 2%;
-  /* opacity: 0.85; */
-  /* background: rgb(11,11,11);
-  background: linear-gradient(180deg, rgba(11,11,11,1) 76%, rgba(38,41,47,0.8379726890756303) 97%, rgba(78,81,83,1) 100%); */
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 2rem;
   color: white;
+  /* height: 100% */
 }
 
 .filtersContainer {
@@ -109,29 +102,4 @@
   outline: 0;
   font-weight: 700;
   box-shadow: 0 0 10px 0 #9761ae inset, 0 0 10px 4px #9761ae;
-}
-
-.paginationContainer {
-    margin-top: 1.5%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: black;
-  width: 13%;
-  padding: 0.2em 1.3em;
-  border-radius: 0.4em;
-}
-
-.pageBtn {
-  border: none;
-  font-size: 1rem;
-  color: white;
-  background-color: transparent;
-  font-weight: 700;
-  cursor: pointer
-}
-
-.pageNumber {
-  font-size: 1.4rem;
-  font-weight: 700;
 }

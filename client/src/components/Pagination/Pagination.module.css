@@ -1,0 +1,29 @@
+.paginationContainer {
+    margin-top: 1.5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 13%;
+    padding: 0.2em 1.3em;
+    border-radius: 0.4em;
+  }
+  
+  .pageBtn {
+    border: none;
+    font-size: 1rem;
+    color: white;
+    background-color: transparent;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .pageNumber {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 0;
+    background-color: white;
+    color: black;
+    padding: 1% 2%
+  }
+  
