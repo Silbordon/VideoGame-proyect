@@ -19,6 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const getAllGenres = require('./src/controllers/genreController.js');
+const getAllPlatforms = require('./src/controllers/platformController.js');
 const { conn } = require('./src/db.js');
 
 
@@ -27,6 +28,7 @@ conn.sync({ force: true }).then(() => {
 
   server.listen(3001, () => {
     getAllGenres()
+    getAllPlatforms()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

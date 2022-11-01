@@ -8,9 +8,11 @@ import {
   getAllVideogames,
   filterByGenre,
   getGenres,
+  getPlatforms,
   filterSource,
   orderAlfabetic,
-  orderRating
+  orderRating,
+  filterByPlatforms
 } from "../../redux/actions";
 import Pagination from "../../components/Pagination/Pagination";
 
@@ -19,6 +21,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getGenres());
+    dispatch(getPlatforms())
     dispatch(getAllVideogames());
   }, [dispatch]);
 
@@ -31,6 +34,12 @@ const Home = () => {
   //logica de get genres
   const allGenres = useSelector((state) => state.genres);
   
+
+  //logica de get platforms
+  const allPlatforms = useSelector((state) => state.platforms);
+console.log(allPlatforms);
+
+
   //logica del boton de create para el renderizado del form
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const openModal = () => setIsVisibleModal(true);
@@ -42,13 +51,20 @@ const Home = () => {
     setPage(1);
     if (e.target.value) dispatch(filterByGenre(e.target.value));
   };
-  //origen
+
+//plataformas
+const handlerFilterPlatforms = (e) => {
+  setPage(1);
+  if (e.target.value) dispatch(filterByPlatforms(e.target.value));
+};
+
+
+  //origen de creacion
   const handlerFilterSource = (e) => {
     setPage(1);
     console.log(e.target.value)
     if (e.target.value) dispatch(filterSource(e.target.value));
   };
-
 
 
   //logica de ordenamientos
@@ -118,10 +134,20 @@ const Home = () => {
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">Platfmors</label>
-              <select className={style.select} name="order" id="order">
-                <option value="a-z">A-Z</option>
-                <option value="z-a">Z-A</option>
+              <label for="order">Platforms</label>
+              <select 
+               onChange={(e) =>  handlerFilterPlatforms(e)}
+                className={style.select} 
+                name="order" 
+                id="order">
+                 <option></option>
+                {allPlatforms?.map((el) => {
+                  return (
+                    <option key={el.id} value={el.name}>
+                      {el.name}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <div className={style.selectContainer}>

@@ -1,8 +1,10 @@
 import axios from "axios";
 export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
 export const GET_GENRES = "GET_GENRES";
+export const GET_PLATFORMS = "GET_PLATFORMS";
 export const GET_VIDEOGAME_DETAILS = "GET_VIDEOGAME_DETAILS";
 export const FILTER_GENRE = "FILTER_GENRE";
+export const  FILTER_PLATFORM = " FILTER_PLATFORM";
 export const FILTER_SOURCE = "FILTER_SOURCE";
 export const ORDER_BY_ALFABETIC = "ORDER_BY_ALFABETIC";
 export const ORDER_BY_RATING = "ORDER_BY_RATING"
@@ -34,6 +36,20 @@ export const getGenres = () => {
   };
 };
 
+
+export const getPlatforms = () => {
+  return async function (dispatch) {
+    try {
+      let respuesta = await axios.get("http://localhost:3001/platforms");
+      return dispatch({
+        type: GET_PLATFORMS,
+        payload: respuesta.data,
+      });
+    } catch (err) {}
+  };
+};
+
+
 export const getVideogameDetail = (id) => {
   return async (dispatch) => {
     try {
@@ -48,6 +64,14 @@ export const getVideogameDetail = (id) => {
 export const filterByGenre = (payload) => {
   return {
     type: FILTER_GENRE,
+    payload,
+  };
+};
+
+
+export const filterByPlatforms = (payload) => {
+  return {
+    type: FILTER_PLATFORM,
     payload,
   };
 };
