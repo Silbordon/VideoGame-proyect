@@ -1,9 +1,13 @@
 import React from "react";
 import style from "./Home.module.css";
+//component
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import CreateVideogame from "../../components/CreateVideogame/CreateVideogame";
+import Pagination from "../../components/Pagination/Pagination";
+import SearchVideogame from "../../components/SearchVideogame/SearchVideogame";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+//actions/REDUX
 import {
   getAllVideogames,
   filterByGenre,
@@ -14,7 +18,7 @@ import {
   orderRating,
   filterByPlatforms
 } from "../../redux/actions";
-import Pagination from "../../components/Pagination/Pagination";
+
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -34,11 +38,8 @@ const Home = () => {
   //logica de get genres
   const allGenres = useSelector((state) => state.genres);
   
-
   //logica de get platforms
   const allPlatforms = useSelector((state) => state.platforms);
-console.log(allPlatforms);
-
 
   //logica del boton de create para el renderizado del form
   const [isVisibleModal, setIsVisibleModal] = useState(false);
@@ -58,14 +59,12 @@ const handlerFilterPlatforms = (e) => {
   if (e.target.value) dispatch(filterByPlatforms(e.target.value));
 };
 
-
   //origen de creacion
   const handlerFilterSource = (e) => {
     setPage(1);
     console.log(e.target.value)
     if (e.target.value) dispatch(filterSource(e.target.value));
   };
-
 
   //logica de ordenamientos
   const handlerOrderByAlfabetic = (e) => {
@@ -168,14 +167,7 @@ const handlerFilterPlatforms = (e) => {
               Create Videogame
             </button>
           </div>
-          <div className={style.inputContainer}>
-            <input
-              placeholder="busca por el nombre"
-              className={style.input}
-              type="text"
-            />
-            <button className={style.btn}>Search</button>
-          </div>
+          <SearchVideogame />
           <Pagination page={page} setPage={setPage} />
           <CardsContainer page={page} />
         </div>

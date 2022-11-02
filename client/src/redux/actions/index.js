@@ -1,5 +1,6 @@
 import axios from "axios";
 export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
+export const GET_VIDEOGAMES_BYNAME= "GET_VIDEOGAMES_BYNAME";
 export const GET_GENRES = "GET_GENRES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
 export const GET_VIDEOGAME_DETAILS = "GET_VIDEOGAME_DETAILS";
@@ -23,6 +24,20 @@ export const getAllVideogames = () => {
     } catch (err) {}
   };
 };
+
+
+export const getVideogamesByName = (search) => {
+  return async function (dispatch) {
+    try {
+      let respuesta = await axios.get(`http://localhost:3001/videogames?name=${search}`);
+      return dispatch({
+        type: GET_VIDEOGAMES_BYNAME,
+        payload: respuesta.data,
+      });
+    } catch (err) {}
+  };
+};
+
 
 export const getGenres = () => {
   return async function (dispatch) {
@@ -60,6 +75,8 @@ export const getVideogameDetail = (id) => {
     } catch (err) {}
   };
 };
+
+
 
 export const filterByGenre = (payload) => {
   return {

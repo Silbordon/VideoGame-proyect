@@ -60,7 +60,7 @@
   font-weight: 700;
 }
 
-.inputContainer {
+/* .inputContainer {
   border-radius: 0.6em;
   margin-top: 3%;
   width: 25%;
@@ -75,7 +75,7 @@
   padding: 1.6% 3%;
   width: 65%;
   border: gray;
-}
+} */
 
 .btn {
   -webkit-appearance: none;
@@ -102,4 +102,4 @@
   outline: 0;
   font-weight: 700;
   box-shadow: 0 0 10px 0 #9761ae inset, 0 0 10px 4px #9761ae;
-}
+} 
