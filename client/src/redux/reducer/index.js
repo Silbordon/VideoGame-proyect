@@ -1,4 +1,5 @@
 export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
+export const GET_VIDEOGAMES_BYNAME = "GET_VIDEOGAMES_BYNAME";
 export const GET_VIDEOGAME_DETAILS = "GET_VIDEOGAME_DETAILS";
 export const GET_GENRES = "GET_GENRES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
@@ -27,6 +28,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         videogames: action.payload,
         allVideoGames: action.payload,
+      };
+
+    case GET_VIDEOGAMES_BYNAME:
+      return {
+        ...state,
+        videogames: action.payload,
       };
 
     case GET_GENRES:
