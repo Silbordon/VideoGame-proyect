@@ -1,16 +1,6 @@
-export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
-export const GET_VIDEOGAMES_BYNAME = "GET_VIDEOGAMES_BYNAME";
-export const GET_VIDEOGAME_DETAILS = "GET_VIDEOGAME_DETAILS";
-export const GET_GENRES = "GET_GENRES";
-export const GET_PLATFORMS = "GET_PLATFORMS";
-export const FILTER_GENRE = "FILTER_GENRE";
-export const FILTER_PLATFORM = " FILTER_PLATFORM";
-export const FILTER_SOURCE = "FILTER_SOURCE";
-export const ORDER_BY_ALFABETIC = "ORDER_BY_ALFABETIC";
-export const ORDER_BY_RATING = "ORDER_BY_RATING";
+import { GET_ALL_VIDEOGAMES,GET_VIDEOGAMES_BYNAME, GET_VIDEOGAME_DETAILS, CREATE_VIDEOGAME, GET_GENRES, GET_PLATFORMS, FILTER_GENRE, FILTER_PLATFORM, FILTER_SOURCE, ORDER_BY_ALFABETIC, ORDER_BY_RATING } from "../actions";
 
 // export const REFRESH_VIDEOGAME_DETAILS = "REFRESH_VIDEOGAME_DETAILS"
-// export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 // export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME";
 
 const initialState = {
@@ -48,6 +38,11 @@ const rootReducer = (state = initialState, action) => {
         platforms: action.payload,
       };
 
+
+      // case CREATE_VIDEOGAME:
+      // return {
+      //   ...state,
+      // };
     //   case CREATE_MOVIE:
     //     return {
     //       ...state,

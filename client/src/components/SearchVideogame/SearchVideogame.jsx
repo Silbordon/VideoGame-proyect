@@ -16,7 +16,6 @@ setInput(e.target.value)
 
 const handlerSubmit = (e) =>{
 e.preventDefault()
-console.log("hola");
 dispatch(getVideogamesByName(input))
 setInput(" ")
 }

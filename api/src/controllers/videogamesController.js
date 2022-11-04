@@ -1,6 +1,6 @@
 require("dotenv").config();
 const axios = require("axios");
-const { Videogame, Genre } = require("../db");
+const { Videogame, Genre, Platforms } = require("../db");
 const { API_KEY } = process.env;
 
 // total de videogames de la api con los de la db
@@ -62,6 +62,13 @@ const getDbVideoGames = async () => {
           attributes: [],
         },
       },
+      {
+        model: Platforms,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      }
     ],
   });
 };
