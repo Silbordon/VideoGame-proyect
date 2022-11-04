@@ -1,6 +1,6 @@
 require("dotenv").config();
 const axios = require("axios");
-const { Videogame, Genre} = require("../db");
+const { Videogame, Genre, Platforms} = require("../db");
 const { API_KEY } = process.env;
 
 // total de videogames de la api con los de la db
@@ -12,7 +12,7 @@ const getVideogameById = async (idVideogame) => {
 //si el id da true y es de tipo uuii lo busco en la db
     if(testId){
         const dbDataById = await getDbVideoGames(idVideogame);
-        dbDataById
+       return dbDataById
     }else{
         const apiDataById = await getApiVideogamesById(idVideogame);
         return apiDataById
@@ -51,6 +51,13 @@ const getDbVideoGames = async (idVideogame) => {
                 attributes: [],
               },
             },
+            {
+              model: Platforms,
+              attributes: ["name"],
+              through: {
+                attributes: [],
+              },
+            }
           ],
 })
 };

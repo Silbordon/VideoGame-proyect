@@ -14,10 +14,10 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    let { id,name,description,release,rating, createInDb, genres, platforms } = req.body;
+    let { id,name,description,released, background_image,rating, createInDb, genres, platforms } = req.body;
     
     try {
-      res.status(200).json(await createVideogame(id,name,description,release,rating, createInDb, genres, platforms));
+      res.status(200).json(await createVideogame(id,name,description,released, background_image,rating, createInDb, genres, platforms));
     } catch (error) {
       res.status(500).json({ err: error.message });
     }

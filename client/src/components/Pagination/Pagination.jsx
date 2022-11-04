@@ -3,8 +3,6 @@ import style from "./Pagination.module.css";
 
 const Pagination = ({page, setPage}) => {
 
-// const [page, setPage] = useState(1)
-
 const handlerNext = () =>{
     setPage(page + 1)
 }
