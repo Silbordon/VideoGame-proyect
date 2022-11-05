@@ -4,12 +4,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 15%;
+    width: 20%;
     padding: 0.2em 1.3em;
     border-radius: 0.4em;
   }
   
   .pageBtn {
+    display: block;
     border: none;
     font-size: 1rem;
     color: white;
@@ -27,3 +28,7 @@
     padding: 1% 2%
   }
   
+
+  .none{
+    display: none
+  }

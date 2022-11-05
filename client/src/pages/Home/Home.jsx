@@ -27,10 +27,12 @@ const Home = () => {
     dispatch(getGenres());
     dispatch(getPlatforms())
     dispatch(getAllVideogames());
+    setPageBooleano(false)
   }, [dispatch]);
 
   //logica paginado
   const [page, setPage] = useState(1);
+  const [pageBooleano, setPageBooleano] = useState(false)
   const [order, setOrder] = useState("")
   const [order2, setOrder2] = useState("")
 
@@ -55,12 +57,14 @@ const Home = () => {
 
 //plataformas
 const handlerFilterPlatforms = (e) => {
+  setPageBooleano(false)
   setPage(1);
   if (e.target.value) dispatch(filterByPlatforms(e.target.value));
 };
 
   //origen de creacion
   const handlerFilterSource = (e) => {
+    setPageBooleano(false)
     setPage(1);
     console.log(e.target.value)
     if (e.target.value) dispatch(filterSource(e.target.value));
@@ -69,15 +73,17 @@ const handlerFilterPlatforms = (e) => {
   //logica de ordenamientos
   const handlerOrderByAlfabetic = (e) => {
     e.preventDefault()
+    setPageBooleano(false)
     setPage(1);
     if (e.target.value) dispatch(orderAlfabetic(e.target.value));
     setOrder(e.target.value)
   };
 
+  console.log(pageBooleano)
 
   const handlerOrderByRating = (e) => {
-    console.log(e.target.value)
     e.preventDefault()
+    setPageBooleano(false)
     setPage(1);
     if (e.target.value) dispatch(orderRating(e.target.value));
     setOrder2(e.target.value)
@@ -167,8 +173,9 @@ const handlerFilterPlatforms = (e) => {
               Create Videogame
             </button>
           </div>
-          <SearchVideogame />
-          <Pagination page={page} setPage={setPage} />
+          <SearchVideogame setPageBooleano={setPageBooleano}/>
+          {pageBooleano === false ? <Pagination page={page} setPage={setPage} /> : null}
+        
           <CardsContainer page={page} />
         </div>
       </div>
