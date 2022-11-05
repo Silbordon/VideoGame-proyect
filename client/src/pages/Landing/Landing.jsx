@@ -8,7 +8,7 @@ const Landing = () => {
 
   return (
     <div className={style.mainContainer}>
-       <audio src={Musica} autoPlay loop/> 
+       <audio src={Musica} autoPlay/> 
         <div className={style.textContainer}>
         <div className={style.landingTitle}>
         <p>Welcome!</p>

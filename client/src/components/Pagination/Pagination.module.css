@@ -4,9 +4,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 20%;
-    padding: 0.2em 1.3em;
+    padding: 0.2rem 2rem;
     border-radius: 0.4em;
+    
+   
   }
   
   .pageBtn {
@@ -21,11 +22,13 @@
   
   .pageNumber {
     font-size: 1.4rem;
+    border-radius: 0.1em;
     font-weight: 700;
     margin-top: 0;
     background-color: white;
     color: black;
-    padding: 1% 2%
+    padding: 1% 2%;
+    margin: 0 10px;
   }
   
 

@@ -8,7 +8,6 @@
   align-items: center
 }
 
-
 .textContainer{
     width: 40%;
     display: flex;
@@ -17,7 +16,6 @@
     align-items: center;
     padding:80px
 }
-
 
 .landingTitle {
   display: flex;
@@ -74,5 +72,12 @@
 
   100% {
     text-shadow: 0 0 3px #fff, 0 0 0px #fff;
+  }
+}
+
+
+@media (max-width: 800px){
+  .mainContainer{
+    background-color: yellow
   }
 }

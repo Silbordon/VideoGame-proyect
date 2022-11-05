@@ -7,8 +7,7 @@ const Pagination = ({page, setPage}) => {
   const allVideogames = useSelector((state) => state.videogames); //es lo que renderizo
   
   let maxPage = (Math.ceil(allVideogames.length/15))
-  console.log(maxPage);
-
+  // console.log(maxPage);
 
 const handlerNext = () =>{
     setPage(page + 1)
@@ -17,7 +16,6 @@ const handlerNext = () =>{
 const handlerPreview = () =>{
     if(page > 1) setPage(page - 1)
 }
-
 
   return (
     <div className={style.paginationContainer}>

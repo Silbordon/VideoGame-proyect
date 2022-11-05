@@ -1,6 +1,6 @@
-import { GET_ALL_VIDEOGAMES,GET_VIDEOGAMES_BYNAME, GET_VIDEOGAME_DETAILS, CREATE_VIDEOGAME, GET_GENRES, GET_PLATFORMS, FILTER_GENRE, FILTER_PLATFORM, FILTER_SOURCE, ORDER_BY_ALFABETIC, ORDER_BY_RATING } from "../actions";
+import { GET_ALL_VIDEOGAMES,GET_VIDEOGAMES_BYNAME, GET_VIDEOGAME_DETAILS, GET_GENRES, GET_PLATFORMS, FILTER_GENRE, FILTER_PLATFORM, FILTER_SOURCE, ORDER_BY_ALFABETIC, ORDER_BY_RATING } from "../actions";
 
-// export const REFRESH_VIDEOGAME_DETAILS = "REFRESH_VIDEOGAME_DETAILS"
+
 // export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME";
 
 const initialState = {
@@ -9,6 +9,7 @@ const initialState = {
   videogameDetail: {},
   genres: [],
   platforms: [],
+  // isLoader : false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -18,6 +19,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         videogames: action.payload,
         allVideoGames: action.payload,
+        // isLoader : false
       };
 
     case GET_VIDEOGAMES_BYNAME:
@@ -38,16 +40,6 @@ const rootReducer = (state = initialState, action) => {
         platforms: action.payload,
       };
 
-
-      // case CREATE_VIDEOGAME:
-      // return {
-      //   ...state,
-      // };
-    //   case CREATE_MOVIE:
-    //     return {
-    //       ...state,
-    //       movies: [...state.movies, action.payload],
-    //     };
 
     case GET_VIDEOGAME_DETAILS:
       return {
@@ -138,12 +130,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         videogames: sortRating,
       };
-
-    // case  REFRESH_VIDEOGAME_DETAILS:
-    //   return {
-    //     ...state,
-    //     videogameDetail: action.payload,
-    //   };
 
     //   case DELETE_MOVIE:
     //     return {

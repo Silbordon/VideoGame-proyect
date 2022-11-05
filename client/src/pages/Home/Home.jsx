@@ -36,7 +36,6 @@ const Home = () => {
   const [order, setOrder] = useState("")
   const [order2, setOrder2] = useState("")
 
-
   //logica de get genres
   const allGenres = useSelector((state) => state.genres);
   
@@ -79,7 +78,7 @@ const handlerFilterPlatforms = (e) => {
     setOrder(e.target.value)
   };
 
-  console.log(pageBooleano)
+  // console.log(pageBooleano)
 
   const handlerOrderByRating = (e) => {
     e.preventDefault()
@@ -175,7 +174,6 @@ const handlerFilterPlatforms = (e) => {
           </div>
           <SearchVideogame setPageBooleano={setPageBooleano}/>
           {pageBooleano === false ? <Pagination page={page} setPage={setPage} /> : null}
-        
           <CardsContainer page={page} />
         </div>
       </div>

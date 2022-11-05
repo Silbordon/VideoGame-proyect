@@ -18,7 +18,7 @@ let newPlatforms;
 
   return (
     <div className={style.cardContainer}>
-      <img className={style.cardImg} src={background_image} alt="" />
+      <img className={style.cardImg} src={background_image} alt={name} />
       <h3 className={style.cardTitle}>{name}</h3>
       <div>
       <h4 className={style.cardInf}>
