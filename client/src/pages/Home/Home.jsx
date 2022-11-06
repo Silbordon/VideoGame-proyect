@@ -16,7 +16,8 @@ import {
   filterSource,
   orderAlfabetic,
   orderRating,
-  filterByPlatforms
+  filterByPlatforms,
+  changeLoader
 } from "../../redux/actions";
 
 
@@ -24,6 +25,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(changeLoader())
     dispatch(getGenres());
     dispatch(getPlatforms())
     dispatch(getAllVideogames());

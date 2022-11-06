@@ -183,3 +183,27 @@ input, textarea {
     box-shadow: 0 0 10px 0 #FF5765 inset, 0 0 10px 4px #FF5765;
   }
 
+
+
+@media (max-width: 800px) {
+  .formContainer{
+    width: 75%
+  }
+}
+
+
+@media (max-width: 450px) {
+  .formContainer{
+    width: 90%
+  }
+
+  .btnCancel{
+    font-size: 0.7rem;
+    padding: 0.6em 1.2em;
+  }
+
+  .btnSubmit{
+    font-size: 0.7rem;
+    padding: 0.6em 1.2em;
+  }
+}

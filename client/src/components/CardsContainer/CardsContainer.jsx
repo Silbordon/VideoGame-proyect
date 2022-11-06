@@ -8,10 +8,12 @@ const CardsContainer = ({ page }) => {
   const totalVideogames = useSelector((state) => state.allVideoGames);
   const paginatedVideogames = paginate(allVideogames, page); //devuelve los elementos por pagina
 
-console.log("totalvideogames",Object.keys(totalVideogames).length); 
-console.log("videogames renderizados",allVideogames);
+  const loader = useSelector((state)=> state.isLoader)
+  console.log(loader)
+// console.log("totalvideogames",Object.keys(totalVideogames).length); 
+// console.log("videogames renderizados",allVideogames);
 
-  // if (Object.keys(totalVideogames).length > 0) {
+  if(!loader){
     if (paginatedVideogames.length > 0) {
       return (
         <div className={style.container}>
@@ -39,12 +41,14 @@ console.log("videogames renderizados",allVideogames);
         </div>
       );
     }
-  // } else {
-  //   return (
-  //     <div className={style.loadingContainer}>  <span class={style.loader}></span></div>
+  }else {
+    return (
+      <div className={style.loadingContainer}>  <span class={style.loader}></span></div>
     
-  //   );
-  // }
+    );
+  }
+    
+  
 };
 
 const paginate = (totalElements, page) => {

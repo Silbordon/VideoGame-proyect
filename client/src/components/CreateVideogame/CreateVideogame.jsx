@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { validation } from "./validations";
 //actions/REDUX
-import { getAllVideogames, getGenres, getPlatforms, postVideogames } from "../../redux/actions";
+import { getAllVideogames, getGenres, getPlatforms, postVideogames, changeLoader } from "../../redux/actions";
 
 const CreateVideogame = ({ func }) => {
   const dispatch = useDispatch();
@@ -52,7 +52,6 @@ const CreateVideogame = ({ func }) => {
     } else {
       return alert("OPPS! :( you can not repeat the same choice");
     }
-
     setErrors(
       validation({
         ...input,
@@ -61,8 +60,7 @@ const CreateVideogame = ({ func }) => {
     );
   };
 
-
-  console.log(errors);
+  // console.log(errors);
 
   const deleteOptionGenres = (e, element) => {
     e.preventDefault();
@@ -97,6 +95,7 @@ const CreateVideogame = ({ func }) => {
       platforms: [],
     });
     func()
+    dispatch(changeLoader())
     dispatch(getAllVideogames())
   };
 

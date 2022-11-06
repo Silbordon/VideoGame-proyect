@@ -1,4 +1,4 @@
-import { GET_ALL_VIDEOGAMES,GET_VIDEOGAMES_BYNAME, GET_VIDEOGAME_DETAILS, GET_GENRES, GET_PLATFORMS, FILTER_GENRE, FILTER_PLATFORM, FILTER_SOURCE, ORDER_BY_ALFABETIC, ORDER_BY_RATING } from "../actions";
+import { GET_ALL_VIDEOGAMES,GET_VIDEOGAMES_BYNAME, GET_VIDEOGAME_DETAILS, GET_GENRES, GET_PLATFORMS, FILTER_GENRE, FILTER_PLATFORM, FILTER_SOURCE, ORDER_BY_ALFABETIC, ORDER_BY_RATING, CHANGE_LOADER } from "../actions";
 
 
 // export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME";
@@ -9,7 +9,7 @@ const initialState = {
   videogameDetail: {},
   genres: [],
   platforms: [],
-  // isLoader : false,
+  isLoader : false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -19,13 +19,14 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         videogames: action.payload,
         allVideoGames: action.payload,
-        // isLoader : false
+        isLoader : false
       };
 
     case GET_VIDEOGAMES_BYNAME:
       return {
         ...state,
         videogames: action.payload,
+        isLoader : false
       };
 
     case GET_GENRES:
@@ -45,6 +46,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         videogameDetail: action.payload,
+        isLoader : false
       };
 
     case FILTER_GENRE:
@@ -130,6 +132,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         videogames: sortRating,
       };
+
+      //paso el isLoader a true
+      case CHANGE_LOADER:
+        return{
+          ...state,
+          isLoader : true
+        }
 
     //   case DELETE_MOVIE:
     //     return {

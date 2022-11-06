@@ -3,7 +3,7 @@ import style from "./CardDetail.module.css";
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogameDetail } from "../../redux/actions";
+import { getVideogameDetail, changeLoader } from "../../redux/actions";
 
 const CardDetail = () => {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ const CardDetail = () => {
   let id = idVideogame.id;
 
   useEffect(() => {
+    dispatch(changeLoader())
     dispatch(getVideogameDetail(id));
   }, [dispatch, id]);
 

@@ -55,5 +55,10 @@ font-size: 1.25rem;
 .detailLink:hover{
     color: #bc85c9;
     font-weight: 600;
-   
 }
+
+@media (max-width: 1200px){
+    .cardContainer{
+      margin: 4% 0
+    }
+  }
