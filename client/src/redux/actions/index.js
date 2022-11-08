@@ -11,12 +11,12 @@ export const ORDER_BY_ALFABETIC = "ORDER_BY_ALFABETIC";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const CHANGE_LOADER = "CHANGE_LOADER";
 
-
-
 export const getAllVideogames = () => {
   return async function (dispatch) {
     try {
-      let respuesta = await axios.get(`http://${process.env.REACT_APP_DOMAIN}:3001/videogames`);
+      let respuesta = await axios.get(
+        `http://${process.env.REACT_APP_DOMAIN}:3001/videogames`
+      );
       return dispatch({
         type: GET_ALL_VIDEOGAMES,
         payload: respuesta.data,
@@ -42,7 +42,9 @@ export const getVideogamesByName = (search) => {
 export const getGenres = () => {
   return async function (dispatch) {
     try {
-      let respuesta = await axios.get(`http://${process.env.REACT_APP_DOMAIN}:3001/genres`);
+      let respuesta = await axios.get(
+        `http://${process.env.REACT_APP_DOMAIN}:3001/genres`
+      );
       return dispatch({
         type: GET_GENRES,
         payload: respuesta.data,
@@ -54,7 +56,9 @@ export const getGenres = () => {
 export const getPlatforms = () => {
   return async function (dispatch) {
     try {
-      let respuesta = await axios.get(`http://${process.env.REACT_APP_DOMAIN}:3001/platforms`);
+      let respuesta = await axios.get(
+        `http://${process.env.REACT_APP_DOMAIN}:3001/platforms`
+      );
       return dispatch({
         type: GET_PLATFORMS,
         payload: respuesta.data,
@@ -77,12 +81,14 @@ export const getVideogameDetail = (id) => {
 export const postVideogames = (payload) => {
   return async function () {
     try {
-      let respuesta = await axios.post(`http://${process.env.REACT_APP_DOMAIN}:3001/videogames`,payload);
+      let respuesta = await axios.post(
+        `http://${process.env.REACT_APP_DOMAIN}:3001/videogames`,
+        payload
+      );
       return respuesta;
     } catch (err) {}
   };
 };
-
 
 export const filterByGenre = (payload) => {
   return {
@@ -119,14 +125,12 @@ export const orderRating = (payload) => {
   };
 };
 
-
-export const changeLoader = () =>{
-  return{
-    type : CHANGE_LOADER,
-    payload : true
-  }
-}
-
+export const changeLoader = () => {
+  return {
+    type: CHANGE_LOADER,
+    payload: true,
+  };
+};
 
 // export const deleteVideogame = (id) => {
 //     return {

@@ -2,11 +2,16 @@ export function validation(input) {
   let errors = {};
   if (!input.name) {
     errors.name = "Name is required";
+  } else if (
+    !/^[a-zA-Z\s]*$/.test(input.name) ||
+    typeof input.name !== "string"
+  ) {
+    errors.name = "Invalid name";
   }
 
   if (!input.description) {
     errors.description = "Description is required";
-  } 
+  }
 
   if (!input.released) {
     errors.released = "Released Date is required";
@@ -28,9 +33,14 @@ export function validation(input) {
 
   if (!input.rating) {
     errors.rating = "Rating is required";
-  }else if ((input.rating > 5) || (input.rating < 0) || /^(?:[1-9]\d{0,4}|0)\.\d$/.test(input.rating)) {
-    errors.rating = 'The rating must be a number not greater than 5, and with at least two decimals';
-};
+  } else if (
+    input.rating > 5 ||
+    input.rating < 0 ||
+    /^(?:[1-9]\d{0,4}|0)\.\d$/.test(input.rating)
+  ) {
+    errors.rating =
+      "The rating must be a number not greater than 5, and with at least two decimals";
+  }
 
   if (input.genres.length < 1) {
     errors.genres = "You must choose at least one option";
