@@ -1,7 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 const { Genre } = require("../db");
-const { API_KEY } = process.env;
+const { API_KEY, URL } = process.env;
 
 const getAllGenres = async () => {
   let dbGenres = await Genre.findAll();
@@ -11,7 +11,7 @@ const getAllGenres = async () => {
 
   // if db is empty
   let genresApi = await axios.get(
-    `https://api.rawg.io/api/genres?key=${API_KEY}`
+    `${URL}/genres?key=${API_KEY}`
   );
   let genresNames = genresApi.data.results.map((el) => {
     return {

@@ -1,7 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 const { Videogame, Genre, Platforms} = require("../db");
-const { API_KEY } = process.env;
+const { API_KEY, URL } = process.env;
 
 // total de videogames de la api con los de la db
 const getVideogameById = async (idVideogame) => {
@@ -22,7 +22,7 @@ const getVideogameById = async (idVideogame) => {
 // busco por id dentro de la api externa
 const getApiVideogamesById = async (idVideogame) => {
   let apiData = await axios.get(
-    `https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`
+    `${URL}/games/${idVideogame}?key=${API_KEY}`
   );
   let genres = apiData.data.genres.map(g => g.name).join(', ');
   let platforms = apiData.data.platforms.map(g => g.platform.name).join(', ');

@@ -1,7 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 const { Platforms } = require("../db");
-const { API_KEY } = process.env;
+const { API_KEY, URL } = process.env;
 
 const getAllPlatforms = async () => {
   let dbPlatforms = await Platforms.findAll();
@@ -13,7 +13,7 @@ const getAllPlatforms = async () => {
   // traer las 5 primeras paginas de la api
   for (let i = 1; i <= 5; i++) {
     let apiData = await axios.get(
-      `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`
+      `${URL}/games?key=${API_KEY}&page=${i}`
     );
     apiVideogames = apiVideogames.concat(apiData.data.results);
   }
