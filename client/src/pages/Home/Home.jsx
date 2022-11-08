@@ -17,30 +17,21 @@ import {
   orderAlfabetic,
   orderRating,
   filterByPlatforms,
-  changeLoader
+  changeLoader,
 } from "../../redux/actions";
-
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(changeLoader())
-    dispatch(getGenres());
-    dispatch(getPlatforms())
-    dispatch(getAllVideogames());
-    setPageBooleano(false)
-  }, [dispatch]);
-
-  //logica paginado
+  //logica paginado 
   const [page, setPage] = useState(1);
-  const [pageBooleano, setPageBooleano] = useState(false)
-  const [order, setOrder] = useState("")
-  const [order2, setOrder2] = useState("")
-
+  const [pageBooleano, setPageBooleano] = useState(false); //logica de mostrar el paginado
+  const [order, setOrder] = useState("");
+  const [order2, setOrder2] = useState("");
+ 
   //logica de get genres
   const allGenres = useSelector((state) => state.genres);
-  
+
   //logica de get platforms
   const allPlatforms = useSelector((state) => state.platforms);
 
@@ -49,80 +40,94 @@ const Home = () => {
   const openModal = () => setIsVisibleModal(true);
   const closeModal = () => setIsVisibleModal(false);
 
+
+
+  useEffect(() => {
+    dispatch(changeLoader());
+    dispatch(getGenres());
+    dispatch(getPlatforms());
+    dispatch(getAllVideogames());
+    setPageBooleano(false);
+  }, [dispatch])
+
   //logica de filtrados:
+
   //generos
   const handlerFilterGenre = (e) => {
     setPage(1);
     if (e.target.value) dispatch(filterByGenre(e.target.value));
   };
 
-//plataformas
-const handlerFilterPlatforms = (e) => {
-  setPageBooleano(false)
-  setPage(1);
-  if (e.target.value) dispatch(filterByPlatforms(e.target.value));
-};
+  //plataformas
+  const handlerFilterPlatforms = (e) => {
+    setPageBooleano(false);
+    setPage(1);
+    if (e.target.value) dispatch(filterByPlatforms(e.target.value));
+  };
 
   //origen de creacion
   const handlerFilterSource = (e) => {
-    setPageBooleano(false)
+    setPageBooleano(false);
     setPage(1);
-    console.log(e.target.value)
+    console.log(e.target.value);
     if (e.target.value) dispatch(filterSource(e.target.value));
   };
 
   //logica de ordenamientos
   const handlerOrderByAlfabetic = (e) => {
-    e.preventDefault()
-    setPageBooleano(false)
+    e.preventDefault();
+    setPageBooleano(false);
     setPage(1);
     if (e.target.value) dispatch(orderAlfabetic(e.target.value));
-    setOrder(e.target.value)
+    setOrder(e.target.value);
   };
 
   // console.log(pageBooleano)
 
   const handlerOrderByRating = (e) => {
-    e.preventDefault()
-    setPageBooleano(false)
+    e.preventDefault();
+    setPageBooleano(false);
     setPage(1);
     if (e.target.value) dispatch(orderRating(e.target.value));
-    setOrder2(e.target.value)
+    setOrder2(e.target.value);
   };
+
 
 
   if (isVisibleModal === false) {
     return (
       <div className={style.generalContainer}>
         <div className={style.bannerContainer}>
-          <h1>La Super Mega API de VideoJuegos</h1>
+          <h1 className={style.landingTitle}>The Super Mega VideoGame Site</h1>
           <div className={style.filtersContainer}>
             <div className={style.selectContainer}>
-              <label for="order">Order by</label>
-              <select 
-                   onChange={(e) => handlerOrderByAlfabetic(e)}
-                  className={style.select} 
-                  name="order" 
-                  id="order">
-                     <option></option>
-                    <option value="a-z">A-Z</option>
-                    <option value="z-a">Z-A</option>
+              <label for="order">A-Z/Z-A-order</label>
+              <select
+                onChange={(e) => handlerOrderByAlfabetic(e)}
+                className={style.select}
+                name="order"
+                id="order"
+              >
+                <option></option>
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">Rating</label>
-              <select 
-               onChange={(e) => handlerOrderByRating(e)}
-                className={style.select} 
-                name="order" 
-                id="order">
-                   <option></option>
-                  <option value="0-5">0-5</option>
-                  <option value="5-0">5-0</option>
+              <label for="order">Order-Rating</label>
+              <select
+                onChange={(e) => handlerOrderByRating(e)}
+                className={style.select}
+                name="order"
+                id="order"
+              >
+                <option></option>
+                <option value="0-5">0-5</option>
+                <option value="5-0">5-0</option>
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">Genres</label>
+              <label for="order">Filter-Gender</label>
               <select
                 onChange={(e) => handlerFilterGenre(e)}
                 className={style.select}
@@ -140,13 +145,14 @@ const handlerFilterPlatforms = (e) => {
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">Platforms</label>
-              <select 
-               onChange={(e) =>  handlerFilterPlatforms(e)}
-                className={style.select} 
-                name="order" 
-                id="order">
-                 <option></option>
+              <label for="order">Filter-platform</label>
+              <select
+                onChange={(e) => handlerFilterPlatforms(e)}
+                className={style.select}
+                name="order"
+                id="order"
+              >
+                <option></option>
                 {allPlatforms?.map((el) => {
                   return (
                     <option key={el.id} value={el.name}>
@@ -174,8 +180,10 @@ const handlerFilterPlatforms = (e) => {
               Create Videogame
             </button>
           </div>
-          <SearchVideogame setPageBooleano={setPageBooleano}/>
-          {pageBooleano === false ? <Pagination page={page} setPage={setPage} /> : null}
+          <SearchVideogame setPageBooleano={setPageBooleano} />
+          {pageBooleano === false ? (
+            <Pagination page={page} setPage={setPage} />
+          ) : null}
           <CardsContainer page={page} />
         </div>
       </div>

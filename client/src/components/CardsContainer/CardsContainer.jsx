@@ -2,16 +2,17 @@ import React from "react";
 import { useSelector } from "react-redux";
 import style from "../CardsContainer/CardsContainer.module.css";
 import Card from "../Card/Card";
+import Loading from "../Loading/Loading";
 
 const CardsContainer = ({ page }) => {
   const allVideogames = useSelector((state) => state.videogames); //es lo que renderizo
-  const totalVideogames = useSelector((state) => state.allVideoGames);
   const paginatedVideogames = paginate(allVideogames, page); //devuelve los elementos por pagina
 
   const loader = useSelector((state)=> state.isLoader)
-  console.log(loader)
+  // console.log(loader)
 // console.log("totalvideogames",Object.keys(totalVideogames).length); 
-// console.log("videogames renderizados",allVideogames);
+console.log("videogames renderizados",allVideogames);
+console.log("cantidad", allVideogames.length);
 
   if(!loader){
     if (paginatedVideogames.length > 0) {
@@ -43,7 +44,8 @@ const CardsContainer = ({ page }) => {
     }
   }else {
     return (
-      <div className={style.loadingContainer}>  <span class={style.loader}></span></div>
+      <Loading />
+      // <div className={style.loadingContainer}>  <span class={style.loader}></span></div>
     
     );
   }

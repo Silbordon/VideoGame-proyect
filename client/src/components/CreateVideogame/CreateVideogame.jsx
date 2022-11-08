@@ -69,6 +69,12 @@ const CreateVideogame = ({ func }) => {
       ...input,
       genres: newGenres,
     });
+    setErrors(
+      validation({
+        ...input,
+        genres: newGenres,
+      })
+    );
   };
 
   const deleteOptionPlatforms = (e, element) => {
@@ -78,6 +84,12 @@ const CreateVideogame = ({ func }) => {
       ...input,
       platforms: newPlatforms,
     });
+    setErrors(
+      validation({
+        ...input,
+        platforms: newPlatforms,
+      })
+    );
   };
 
   const handlerSubmit = (e) => {
@@ -136,11 +148,9 @@ const CreateVideogame = ({ func }) => {
             <label for="rating">Rating: </label>
             <input
               name="rating"
-              placeholder='4.9'
+              placeholder='4.92'
               onChange={(e) => handlerInputvalue(e)}
               value={input.rating}
-              min="1"
-              max="5"
               type="number"
             />
           </div>

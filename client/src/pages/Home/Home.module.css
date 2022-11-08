@@ -6,6 +6,41 @@
   height: 47vh;
 }
 
+.landingTitle {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 0px #fff, 0 0 0px #fff;
+  animation-name: link;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.landingTitle > p{
+ font-size: 2.9rem;
+ font-weight: 600
+}
+
+@keyframes link {
+  0% {
+    text-shadow: 0 0 3px #fff, 0 0 0px #fff;
+  }
+
+  50% {
+    text-shadow: 0 0 6px rgb(206, 206, 206), 0 0 25px #fff;
+  }
+
+  100% {
+    text-shadow: 0 0 3px #fff, 0 0 0px #fff;
+  }
+}
+
+
+
+
+
 .bannerContainer {
   position: absolute;
   top: 0;

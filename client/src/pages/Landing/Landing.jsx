@@ -6,7 +6,7 @@ import Musica from "../../img/y2mate_mp3cut.net_2.mp3";
 const Landing = () => {
   return (
     <div className={style.mainContainer}>
-      <audio src={Musica} autoPlay />
+      <audio src={Musica} autoPlay loop />
       <div className={style.textContainer}>
         <div className={style.landingTitle}>
           <p>Welcome!</p>
