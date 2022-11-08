@@ -1,5 +1,4 @@
 import axios from "axios";
-require("dotenv").config();
 export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
 export const GET_VIDEOGAMES_BYNAME = "GET_VIDEOGAMES_BYNAME";
 export const GET_GENRES = "GET_GENRES";
@@ -11,14 +10,13 @@ export const FILTER_SOURCE = "FILTER_SOURCE";
 export const ORDER_BY_ALFABETIC = "ORDER_BY_ALFABETIC";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const CHANGE_LOADER = "CHANGE_LOADER";
-const { DOMAIN } = process.env;
 
 
 
 export const getAllVideogames = () => {
   return async function (dispatch) {
     try {
-      let respuesta = await axios.get(`http://${DOMAIN}:3001/videogames`);
+      let respuesta = await axios.get(`http://${process.env.DOMAIN}:3001/videogames`);
       return dispatch({
         type: GET_ALL_VIDEOGAMES,
         payload: respuesta.data,
