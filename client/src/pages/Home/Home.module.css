@@ -18,9 +18,9 @@
   animation-iteration-count: infinite;
 }
 
-.landingTitle > p{
- font-size: 2.9rem;
- font-weight: 600
+.landingTitle > p {
+  font-size: 2.9rem;
+  font-weight: 600;
 }
 
 @keyframes link {
@@ -36,10 +36,6 @@
     text-shadow: 0 0 3px #fff, 0 0 0px #fff;
   }
 }
-
-
-
-
 
 .bannerContainer {
   position: absolute;
@@ -178,9 +174,8 @@
   }
 }
 
-
 @media (max-width: 500px) {
-.bannerContainer{
-  font-size: 0.9
-}
+  .bannerContainer {
+    font-size: 0.9;
+  }
 }
