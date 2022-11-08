@@ -42,3 +42,32 @@
     box-shadow: 0 0 10px 0 #9761ae inset, 0 0 10px 4px #9761ae;
   }
   
+
+
+@media (max-width: 1300px){
+  .inputContainer{
+    width: 50%;
+  }
+}
+
+@media (max-width: 760px){
+  .inputContainer{
+    width: 65%;
+  }
+
+  .input {
+    font-size: 0.9rem;
+    padding: 1.6% 3%;
+  }
+  
+  .btn {
+    font-size: 1rem;
+    padding: 0.8em 1.2em;
+  }
+}
+
+@media (max-width: 620px){
+  .inputContainer{
+    width: 90%
+  }
+}

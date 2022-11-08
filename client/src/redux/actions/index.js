@@ -9,6 +9,7 @@ export const FILTER_PLATFORM = " FILTER_PLATFORM";
 export const FILTER_SOURCE = "FILTER_SOURCE";
 export const ORDER_BY_ALFABETIC = "ORDER_BY_ALFABETIC";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
+export const CHANGE_LOADER = "CHANGE_LOADER";
 // export const REFRESH_VIDEOGAME_DETAILS = "REFRESH_VIDEOGAME_DETAILS"
 // export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 // export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME";
@@ -83,21 +84,6 @@ export const postVideogames = (payload) => {
   };
 };
 
-// export const createVideogame = (payload) => {
-//     return {
-//         type: CREATE_MOVIE,
-//         payload: { ...payload,
-//             id : id++,
-//         },
-//       };
-//  };
-
-// export const createPokemon = (payload) => {
-//   return async () => {
-//     let info = await axios.post("http://localhost:3001/pokemons", payload);
-//     return info;
-//   };
-// };
 
 export const filterByGenre = (payload) => {
   return {
@@ -134,13 +120,14 @@ export const orderRating = (payload) => {
   };
 };
 
-// export const refreshVideogameDetail = () => {
-//     return {
-//         type: REFRESH_VIDEOGAME_DETAILS,
-//         payload: {}
 
-//       };
-//  };
+export const changeLoader = () =>{
+  return{
+    type : CHANGE_LOADER,
+    payload : true
+  }
+}
+
 
 // export const deleteVideogame = (id) => {
 //     return {

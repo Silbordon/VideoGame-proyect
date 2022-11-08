@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./SearchVideogame.module.css";
-import { useState } from "react";
+import { useState} from "react";
 import { useDispatch} from "react-redux";
-import { getVideogamesByName } from "../../redux/actions";
+import {getVideogamesByName, changeLoader } from "../../redux/actions";
 
 
-const SearchVideogame = () => {
+const SearchVideogame = ({setPageBooleano}) => {
 
 const [input, setInput] = useState("")
 const dispatch = useDispatch()
@@ -16,7 +16,9 @@ setInput(e.target.value)
 
 const handlerSubmit = (e) =>{
 e.preventDefault()
+dispatch(changeLoader())
 dispatch(getVideogamesByName(input))
+setPageBooleano(true)
 setInput(" ")
 }
 

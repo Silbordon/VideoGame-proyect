@@ -6,6 +6,41 @@
   height: 47vh;
 }
 
+.landingTitle {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 0px #fff, 0 0 0px #fff;
+  animation-name: link;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.landingTitle > p{
+ font-size: 2.9rem;
+ font-weight: 600
+}
+
+@keyframes link {
+  0% {
+    text-shadow: 0 0 3px #fff, 0 0 0px #fff;
+  }
+
+  50% {
+    text-shadow: 0 0 6px rgb(206, 206, 206), 0 0 25px #fff;
+  }
+
+  100% {
+    text-shadow: 0 0 3px #fff, 0 0 0px #fff;
+  }
+}
+
+
+
+
+
 .bannerContainer {
   position: absolute;
   top: 0;
@@ -60,23 +95,6 @@
   font-weight: 700;
 }
 
-/* .inputContainer {
-  border-radius: 0.6em;
-  margin-top: 3%;
-  width: 25%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.input {
-  outline: none;
-  font-size: 0.9rem;
-  border-radius: 0.6em;
-  padding: 1.6% 3%;
-  width: 65%;
-  border: gray;
-} */
-
 .btn {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -102,4 +120,67 @@
   outline: 0;
   font-weight: 700;
   box-shadow: 0 0 10px 0 #9761ae inset, 0 0 10px 4px #9761ae;
-} 
+}
+
+@media (max-width: 1200px) {
+  .bannerContainer {
+    font-size: 1.5rem;
+  }
+
+  .filtersContainer {
+    width: 85%;
+  }
+
+  .selectContainer {
+    padding: 0.5% 1.5%;
+    font-size: 0.9rem;
+    width: 110px;
+  }
+
+  .select {
+    font-size: 0.7;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 1em 1.2em;
+  }
+}
+
+@media (max-width: 850px) {
+  .generalContainer {
+    height: 63vh;
+  }
+  .bannerContainer {
+    font-size: 1.1rem;
+  }
+
+  .filtersContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .selectContainer {
+    padding: 0.5% 1.8%;
+    font-size: 0.8rem;
+    width: 130px;
+    margin-top: 3%;
+  }
+
+  .select {
+    font-size: 0.8;
+  }
+
+  .btn {
+    margin-top: 3%;
+    font-size: 1rem;
+    padding: 1em 1.2em;
+  }
+}
+
+
+@media (max-width: 500px) {
+.bannerContainer{
+  font-size: 0.9
+}
+}

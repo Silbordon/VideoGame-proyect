@@ -65,3 +65,80 @@
   color: #bc85c9;
   font-weight: 600;
 }
+
+
+@media (max-width: 1000px){
+  .cardImg {
+    width: 50%;
+    height: 50vh;
+  }
+  
+  .detailText {
+    color: white;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+  }
+  .cardTitle {
+    font-size: 1.7rem;
+    font-weight: 800;
+  }
+  
+  .cardInf {
+    font-size: 1.1rem;
+  }
+  
+  .cardSpan {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 800px){
+    .detailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+  } 
+
+  .cardImg{
+    height: 40vh
+  }
+  
+  .detailText{
+    width: 90%;
+  }
+
+  .cardTitle {
+    margin-top: 2%;
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-bottom: 0;
+  }
+  
+  .cardInf {
+    margin-top: 2%;
+    font-size: 1.1rem;
+    margin-bottom: 0
+  }
+  
+  .cardSpan {
+    margin-top: 2%
+  }
+}
+
+@media (max-width: 450px){
+  .detailContainer{
+    padding: 8% 0
+  }
+  .cardImg{
+    margin-top: 10%;
+    height: 20vh
+  }
+
+  .btn{
+    left: 2%;
+    top: 1%;
+    font-size: 0.8rem
+  }
+}
