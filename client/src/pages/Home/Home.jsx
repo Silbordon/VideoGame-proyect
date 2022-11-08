@@ -23,12 +23,12 @@ import {
 const Home = () => {
   const dispatch = useDispatch();
 
-  //logica paginado 
+  //logica paginado
   const [page, setPage] = useState(1);
   const [pageBooleano, setPageBooleano] = useState(false); //logica de mostrar el paginado
   const [order, setOrder] = useState("");
   const [order2, setOrder2] = useState("");
- 
+
   //logica de get genres
   const allGenres = useSelector((state) => state.genres);
 
@@ -40,15 +40,13 @@ const Home = () => {
   const openModal = () => setIsVisibleModal(true);
   const closeModal = () => setIsVisibleModal(false);
 
-
-
   useEffect(() => {
     dispatch(changeLoader());
     dispatch(getGenres());
     dispatch(getPlatforms());
     dispatch(getAllVideogames());
     setPageBooleano(false);
-  }, [dispatch])
+  }, [dispatch]);
 
   //logica de filtrados:
 
@@ -69,7 +67,7 @@ const Home = () => {
   const handlerFilterSource = (e) => {
     setPageBooleano(false);
     setPage(1);
-    console.log(e.target.value);
+    // console.log(e.target.value);
     if (e.target.value) dispatch(filterSource(e.target.value));
   };
 
@@ -91,8 +89,6 @@ const Home = () => {
     if (e.target.value) dispatch(orderRating(e.target.value));
     setOrder2(e.target.value);
   };
-
-
 
   if (isVisibleModal === false) {
     return (

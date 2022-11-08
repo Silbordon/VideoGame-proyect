@@ -5,16 +5,16 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center
+  align-items: center;
 }
 
-.textContainer{
-    width: 40%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    align-items: center;
-    padding:80px
+.textContainer {
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
 }
 
 .landingTitle {
@@ -29,9 +29,9 @@
   animation-iteration-count: infinite;
 }
 
-.landingTitle > p{
- font-size: 2.9rem;
- font-weight: 600
+.landingTitle > p {
+  font-size: 2.9rem;
+  font-weight: 600;
 }
 
 .start {
@@ -48,9 +48,9 @@
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  border-color: #9761AE;
+  border-color: #9761ae;
   color: #fff;
-  box-shadow: 0 0 40px 40px #9761AE inset, 0 0 0 0 #9761AE;
+  box-shadow: 0 0 40px 40px #9761ae inset, 0 0 0 0 #9761ae;
   -webkit-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
 }
@@ -58,7 +58,7 @@
 .start:hover {
   color: #fff;
   outline: 0;
-  box-shadow: 0 0 10px 0 #9761AE inset, 0 0 10px 4px #9761AE;
+  box-shadow: 0 0 10px 0 #9761ae inset, 0 0 10px 4px #9761ae;
 }
 
 @keyframes link {
@@ -75,25 +75,22 @@
   }
 }
 
-
-@media (max-width: 800px){
-
-  .mainContainer{
+@media (max-width: 800px) {
+  .mainContainer {
     display: flex;
     justify-content: center;
   }
 
-  .textContainer{
-    width: 80%
-}
+  .textContainer {
+    width: 80%;
+  }
 
-.landingTitle > p{
-  font-size: 2.3rem;
- }
+  .landingTitle > p {
+    font-size: 2.3rem;
+  }
 
- .start{
-  /* font-size: 1.3rem; */
-  padding: 0.8em 2.8em;
- }
-
+  .start {
+    /* font-size: 1.3rem; */
+    padding: 0.8em 2.8em;
+  }
 }

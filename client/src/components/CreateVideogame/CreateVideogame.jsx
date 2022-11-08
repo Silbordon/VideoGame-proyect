@@ -60,8 +60,7 @@ const CreateVideogame = ({ func }) => {
     );
   };
 
-  // console.log(errors);
-
+ 
   const deleteOptionGenres = (e, element) => {
     e.preventDefault();
     const newGenres = input.genres.filter((el) => el !== element);
@@ -244,7 +243,7 @@ const CreateVideogame = ({ func }) => {
           </div>
 
           <div className={style.btnContainer}>
-            <button className={Object.entries(errors).length !== 0 ? style.none : style.btnSubmit} type="submit">
+            <button className={input.name == "" || Object.entries(errors).length !== 0 ? style.none : style.btnSubmit} type="submit">
               Create
             </button>
             <NavLink
