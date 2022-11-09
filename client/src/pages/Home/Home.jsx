@@ -150,7 +150,7 @@ const Home = () => {
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">Filter-platform</label>
+              <label for="order">Filter-Platform</label>
               <select
                 onChange={(e) => handlerFilterPlatforms(e)}
                 className={style.select}
@@ -168,7 +168,7 @@ const Home = () => {
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">Source</label>
+              <label for="order">Filter-Source</label>
               <select
                 onChange={(e) => handlerFilterSource(e)}
                 className={style.select}
