@@ -90,6 +90,15 @@ const Home = () => {
     setOrder2(e.target.value);
   };
 
+
+  //logica reset btn
+  const handleReset = (e) =>{
+    e.preventDefault();
+    dispatch(changeLoader());
+    dispatch(getAllVideogames());
+    setPageBooleano(false);
+  }
+
   if (isVisibleModal === false) {
     return (
       <div className={style.generalContainer}>
@@ -174,6 +183,9 @@ const Home = () => {
             </div>
             <button onClick={openModal} className={style.btn}>
               Create Videogame
+            </button>
+            <button onClick={(e)=>handleReset(e)} className={style.btn}>
+              Reset
             </button>
           </div>
           <SearchVideogame setPageBooleano={setPageBooleano} />
