@@ -8,7 +8,7 @@ const getVideogameById = async (idVideogame) => {
 //valido si el ID tiene formato de uuii para ver si lo buscamos en la DB o en la api
     const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
     const testId = regexExp.test(idVideogame)
-    console.log(testId)
+    // console.log(testId)
 //si el id da true y es de tipo uuii lo busco en la db
     if(testId){
         const dbDataById = await getDbVideoGames(idVideogame);

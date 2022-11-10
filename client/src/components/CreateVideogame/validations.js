@@ -3,7 +3,7 @@ export function validation(input) {
   if (!input.name) {
     errors.name = "Name is required";
   } else if (
-    !/^[a-zA-Z\s]*$/.test(input.name) ||
+    !/^[A-Za-z0-9\s]*$/.test(input.name) ||
     typeof input.name !== "string"
   ) {
     errors.name = "Invalid name";

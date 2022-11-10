@@ -90,6 +90,15 @@ const Home = () => {
     setOrder2(e.target.value);
   };
 
+
+  //logica reset btn
+  const handleReset = (e) =>{
+    e.preventDefault();
+    dispatch(changeLoader());
+    dispatch(getAllVideogames());
+    setPageBooleano(false);
+  }
+
   if (isVisibleModal === false) {
     return (
       <div className={style.generalContainer}>
@@ -141,7 +150,7 @@ const Home = () => {
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">Filter-platform</label>
+              <label for="order">Filter-Platform</label>
               <select
                 onChange={(e) => handlerFilterPlatforms(e)}
                 className={style.select}
@@ -159,7 +168,7 @@ const Home = () => {
               </select>
             </div>
             <div className={style.selectContainer}>
-              <label for="order">Source</label>
+              <label for="order">Filter-Source</label>
               <select
                 onChange={(e) => handlerFilterSource(e)}
                 className={style.select}
@@ -174,6 +183,9 @@ const Home = () => {
             </div>
             <button onClick={openModal} className={style.btn}>
               Create Videogame
+            </button>
+            <button onClick={(e)=>handleReset(e)} className={style.btn}>
+              Reset
             </button>
           </div>
           <SearchVideogame setPageBooleano={setPageBooleano} />

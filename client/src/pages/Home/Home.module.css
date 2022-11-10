@@ -3,7 +3,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
-  height: 47vh;
+  height: 50vh;
 }
 
 .landingTitle {
@@ -118,13 +118,19 @@
   box-shadow: 0 0 10px 0 #9761ae inset, 0 0 10px 4px #9761ae;
 }
 
+@media (max-width: 1600px) {
+  .filtersContainer {
+    width: 90%;
+  }
+}
+
 @media (max-width: 1200px) {
   .bannerContainer {
     font-size: 1.5rem;
   }
 
   .filtersContainer {
-    width: 85%;
+    width: 80%;
   }
 
   .selectContainer {
@@ -143,9 +149,9 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   .generalContainer {
-    height: 63vh;
+    height: 68vh;
   }
   .bannerContainer {
     font-size: 1.1rem;
@@ -175,6 +181,10 @@
 }
 
 @media (max-width: 500px) {
+  .generalContainer {
+    height: 78vh;
+  }
+
   .bannerContainer {
     font-size: 0.9;
   }

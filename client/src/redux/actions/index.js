@@ -85,8 +85,11 @@ export const postVideogames = (payload) => {
         `http://${process.env.REACT_APP_DOMAIN}:3001/videogames`,
         payload
       );
+      alert("Successfully created Videogame");
       return respuesta;
-    } catch (err) {}
+    } catch (err) {
+      alert("ERROR :" + err.response.data.err )
+    }
   };
 };
 

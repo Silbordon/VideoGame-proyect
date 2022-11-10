@@ -140,10 +140,10 @@ const rootReducer = (state = initialState, action) => {
           isLoader : true
         }
 
-    //   case DELETE_MOVIE:
+    //   case DELETE_VIDEOGAME:
     //     return {
     //       ...state,
-    //       movies: state.movies.filter((movie) => movie.id !== action.payload),
+    //       videogames: state.videogames.filter((el) => el.id !== action.payload),
     //     };
 
     default:
