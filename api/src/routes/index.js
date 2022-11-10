@@ -17,9 +17,5 @@ router.use("/videogame", videogame);
 router.use("/genres", genres);
 router.use("/platforms", platforms);
 
-// router.get("/", function (req, res) {
-//   res.status(200);
-//   return;
-// });
 
 module.exports = router;

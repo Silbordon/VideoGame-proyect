@@ -6,9 +6,8 @@ const { Videogame, Genre, Platforms } = require("../db");
 
 router.get("/", async (req, res) => {
   let { name } = req.query;
-  let { page } = req.query;
   try {
-    res.status(200).json(await getVideogames(name, page));
+    res.status(200).json(await getVideogames(name));
   } catch (error) {
     res.status(500).json({ err: error.message });
   }
@@ -55,12 +54,19 @@ router.post("/", async (req, res) => {
 });
 
 
-
-
-
 router.put("/", async (req, res) => {
-  let {id,name, description,released,background_image, rating, createInDb, genres,platforms} = req.body;
-  
+  let {
+    id,
+    name,
+    description,
+    released,
+    background_image,
+    rating,
+    createInDb,
+    genres,
+    platforms,
+  } = req.body;
+
   const putVideogame = async (
     id,
     name,
@@ -105,7 +111,6 @@ router.put("/", async (req, res) => {
       ],
     });
 
- 
     let genreDb = await Genre.findAll({
       where: { name: genres },
     });
@@ -116,7 +121,6 @@ router.put("/", async (req, res) => {
     });
     updatedVideoGame.setPlatforms(platformsDb);
   };
-
   try {
     res
       .status(200)
