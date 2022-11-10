@@ -95,7 +95,6 @@ const CreateVideogame = ({ func }) => {
     e.preventDefault();
     console.log(input);
     dispatch(postVideogames(input));
-    alert("Successfully created Videogame");
     setInput({
       name: "",
       description: "",

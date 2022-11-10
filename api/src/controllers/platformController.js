@@ -3,6 +3,7 @@ const axios = require("axios");
 const { Platforms } = require("../db");
 const { API_KEY, URL } = process.env;
 
+
 const getAllPlatforms = async () => {
   let dbPlatforms = await Platforms.findAll();
   if (dbPlatforms.length !== 0) {
@@ -21,13 +22,20 @@ const getAllPlatforms = async () => {
     el.platforms.map((el) => el.platform.name)
   );
   //videogames es un array con array hijos [[],[],[]]
-  console.log(videogamesData);
+  // console.log(videogamesData);
 
+  let platformsToInsert = [];
   videogamesData.forEach((e) => {
     e.forEach((el) => {
-      Platforms.findOrCreate({
-        where: { name: el },
-      });
+      if (!platformsToInsert.find((element) => element === el)) {
+        platformsToInsert.push(el);
+      }
+    });
+  });
+
+  platformsToInsert.forEach((e) => {
+    Platforms.findOrCreate({
+      where: { name: e },
     });
   });
   return await Platforms.findAll();

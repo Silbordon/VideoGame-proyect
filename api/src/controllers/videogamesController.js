@@ -15,8 +15,10 @@ const getVideogames = async (name) => {
     totalVideogames = apiData;
   }
 
-  if (name){
-    let result = totalVideogames.filter(el => { return el.name.toLowerCase().includes(name.toLowerCase()) });
+  if (name) {
+    let result = totalVideogames.filter((el) => {
+      return el.name.toLowerCase().includes(name.toLowerCase());
+    });
     return paginateVideogames(result, 1);
   }
 
@@ -30,9 +32,7 @@ const getApiVideogames = async () => {
   let apiVideogames = [];
   // traer las 5 primeras paginas de la api
   for (let i = 1; i <= 5; i++) {
-    let apiData = await axios.get(
-      `${URL}/games?key=${API_KEY}&page=${i}`
-    );
+    let apiData = await axios.get(`${URL}/games?key=${API_KEY}&page=${i}`);
     apiVideogames = apiVideogames.concat(apiData.data.results);
   }
 
@@ -47,7 +47,7 @@ const getApiVideogames = async () => {
       background_image: el.background_image,
     };
   });
-  console.log(videogamesData);
+  // console.log(videogamesData);
   return videogamesData;
 };
 
@@ -68,7 +68,7 @@ const getDbVideoGames = async () => {
         through: {
           attributes: [],
         },
-      }
+      },
     ],
   });
 };
@@ -79,4 +79,4 @@ const paginateVideogames = (totalVideogames, page) => {
   return totalVideogames.slice(start, end);
 };
 
-module.exports = getVideogames
+module.exports = getVideogames;

@@ -2,7 +2,6 @@ require("dotenv").config();
 const { Genre, Videogame, Platforms } = require("../db");
 
 const createVideogame = async (
-  id,
   name,
   description,
   released,
@@ -12,12 +11,20 @@ const createVideogame = async (
   genres,
   platforms
 ) => {
-  console.log(genres);
+  // console.log(genres);
   if (!name && !description && !genres && !platforms) {
-    throw new Error("falta completar datos");
+    throw new Error("missing_data");
   }
+
+  let videoGameName = await Videogame.findOne({
+    where: { name },
+  });
+
+  if (videoGameName) {
+    throw new Error("videogame_exits");
+  }
+
   let videoGamecreate = await Videogame.create({
-    id,
     name,
     description,
     released,
@@ -25,19 +32,17 @@ const createVideogame = async (
     rating,
     createInDb,
   });
-
-
   let genreDb = await Genre.findAll({
     where: { name: genres },
   });
   videoGamecreate.addGenre(genreDb);
-  console.log(genreDb);
+  // console.log(genreDb);
 
   let platformsDb = await Platforms.findAll({
     where: { name: platforms },
   });
   videoGamecreate.addPlatforms(platformsDb);
-  console.log(platformsDb);
+  // console.log(platformsDb);
 };
 
 module.exports = createVideogame;
