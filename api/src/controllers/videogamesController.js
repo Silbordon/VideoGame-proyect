@@ -19,7 +19,47 @@ const getVideogames = async (name) => {
     let result = totalVideogames.filter((el) => {
       return el.name.toLowerCase().includes(name.toLowerCase());
     });
-    return paginateVideogames(result, 1);
+    // console.log("name",result.length);
+
+    let arrConGenres = [];
+    totalVideogames.forEach((element) => {
+      if (element.createInDb === true) {
+        element.genres.forEach((e) => {
+          if (e.name.toLowerCase() === name.toLowerCase()) {
+            arrConGenres.push(element);
+          }
+        });
+      } else {
+        element.genres.forEach((e) => {
+          if (e.toLowerCase() === name.toLowerCase()) {
+            arrConGenres.push(element);
+          }
+        });
+      }
+      // console.log('genres',arrConGenres.length);
+      return arrConGenres;
+    });
+
+    if(result.length > 0 && arrConGenres.length>0){
+      for(let i = 0; i< arrConGenres.length; i++){
+        for(let j =0; j< result.length; j++){
+          if(result[j].name.toLowerCase() !== arrConGenres[i].name.toLowerCase()){
+            arrConGenres.push(result[j]);
+          }
+        }
+        console.log(arrConGenres.length);
+      }
+      return paginateVideogames(arrConGenres, 1);
+    }
+    
+    if(arrConGenres.length > 0){
+      return paginateVideogames(arrConGenres, 1);
+    }
+    if(result.length >0){
+      return paginateVideogames(result, 1);
+    }
+   
+    
   }
 
   // logica de paginacion
